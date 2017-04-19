@@ -33,7 +33,14 @@ export default class Chat extends Component {
     console.log(response);
     console.log(response.botresponse.messageout.context);
 
-    var msg = response.botresponse.messageout.output.text[0]
+    var msg = ''
+
+    response.botresponse.messageout.output.text.map(function(e) {
+        msg = msg + e + '<br/><br/>'
+    })
+
+    msg = msg.replace('http://xxxx.xxxx.rbsgrp.net/', '<a href="/images/results.pdf">http://hackathon2017.rbs.com/winner</a>')
+
     console.log(msg);
 
     var name = 'Ally Architect'
@@ -48,7 +55,8 @@ export default class Chat extends Component {
 
     this.setState(function(previousState) {
       previousState.messages.push({
-        message: response.botresponse.messageout.output.text,
+        message: msg.substring(0, msg.length - 6)
+,
         from: name
       });
       return {
@@ -90,13 +98,17 @@ export default class Chat extends Component {
     }
 
   render() {
+
+    const hiddenRowStyle = {
+      height: '80px'
+    }
+
     const divStyle = {
       width: '100%'
     }
 
     const navStyle = {
       backgroundColor: '#003b79',
-      height: '50px'
     }
 
     const navTextStyle = {
@@ -115,7 +127,7 @@ export default class Chat extends Component {
 
     return (
       <div style={divStyle}>
-          <Navbar style={navStyle}>
+          <Navbar style={navStyle} fixedTop>
             <Navbar.Header>
               <Navbar.Brand>
                 <img src="images/header_image_rbs.jpg" style={imgStyle} />
@@ -123,7 +135,9 @@ export default class Chat extends Component {
             </Navbar.Header>
           </Navbar>
         <Grid>
-            <Row className="show-grid">
+            <Row style={hiddenRowStyle}>
+            </Row>
+            <Row>
               <Col xs={6} xsOffset={3}>
                 <div style={chatStyle}>
                   <ChatHistory messages={this.state.messages}></ChatHistory>

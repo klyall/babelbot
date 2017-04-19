@@ -57,7 +57,7 @@ export default class ChatMessage extends Component {
     return (
       <div style={messageStyle}>
         <div style={userStyle}>
-        {this.props.message.message}
+        <span dangerouslySetInnerHTML={{__html: this.props.message.message}}></span>
         <div style={nameStyle}>{this.props.message.from}</div>
         </div>
       </div>
