@@ -15,7 +15,7 @@ export default class ChatInput extends Component {
     console.log('do we get here', this.props.messages)
     this.props.sendMessage({
       message: this.state.inputValue,
-      from: 'you'
+      from: 'You'
     });
     this.setState({
       inputValue: ''

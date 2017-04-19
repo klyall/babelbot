@@ -29,12 +29,27 @@ export default class Chat extends Component {
 
   receiveMessage(response) {
     console.log(this.state);
-    console.log(response.botresponse.messageout.output.text);
+    console.log("Response received ... " );
+    console.log(response);
     console.log(response.botresponse.messageout.context);
+
+    var msg = response.botresponse.messageout.output.text[0]
+    console.log(msg);
+
+    var name = 'Ally Architect'
+
+    if (msg.includes('According to RBS standards')) {
+        name = 'Security Stan'
+    } else if (msg.includes('How many users')) {
+        name = 'Resilience Roz'    }
+     else if (msg.includes('When will this application be in use')) {
+        name = 'Resilience Roz'
+    }
+
     this.setState(function(previousState) {
       previousState.messages.push({
         message: response.botresponse.messageout.output.text,
-        from: 'bot'
+        from: name
       });
       return {
         messages: previousState.messages,
@@ -121,4 +136,3 @@ export default class Chat extends Component {
     );
   }
 }
-//                <a href="#" style={navTextStyle}>BabelBot</a>

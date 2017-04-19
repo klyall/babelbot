@@ -32,14 +32,34 @@ export default class ChatMessage extends Component {
       MozBoxSizing: 'content-box'
     }
 
-    var userStyle = ((this.props.message.from === 'bot') ? botMessageStyle : userMessageStyle)
+    const nameStyle = {
+        fontSize: '0.6em'
+    }
 
+    console.log(typeof botMessageStyle)
     var messageStyle = baseMessageStyle
-    messageStyle['textAlign'] = ((this.props.message.from === 'bot') ? 'right' : 'left')
+    messageStyle['textAlign'] = ((this.props.message.from === 'You') ? 'left' : 'right')
+
+    var userStyle = ((this.props.message.from === 'You') ? userMessageStyle : botMessageStyle)
+
+    if (this.props.message.from.includes('You')) {
+        userStyle = userMessageStyle
+    } else if (this.props.message.from.includes('Security')) {
+        userStyle = Object.assign({}, botMessageStyle)
+        userStyle['background'] = '#f44242'
+    } else if (this.props.message.from.includes('Resilience')) {
+        userStyle = Object.assign({}, botMessageStyle)
+        userStyle['background'] = '#f4aa42'
+    } else {
+        userStyle = botMessageStyle
+    }
 
     return (
       <div style={messageStyle}>
-        <div style={userStyle}>{this.props.message.message}</div>
+        <div style={userStyle}>
+        {this.props.message.message}
+        <div style={nameStyle}>{this.props.message.from}</div>
+        </div>
       </div>
     );
   }
