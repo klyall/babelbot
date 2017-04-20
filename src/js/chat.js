@@ -109,7 +109,7 @@ export default class Chat extends Component {
     }
 
     const navStyle = {
-      backgroundColor: "#003b79"
+      backgroundColor: "#0A2F64"
     }
 
     const navTextStyle = {

@@ -9,7 +9,7 @@ export default class ChatMessage extends Component {
     }
 
     const botMessageStyle = {
-      background: "#49d22b",
+      background: "#81AA28",
       color: "white",
       display: "inline-block",
       fontSize: "2rem",
@@ -19,7 +19,7 @@ export default class ChatMessage extends Component {
     }
 
     const userMessageStyle = {
-      background: "#0FB0DF",
+      background: "#06B3BB",
       boxSizing: "content-box",
       color: "white",
       display: "inline-block",
@@ -50,10 +50,10 @@ export default class ChatMessage extends Component {
       userStyle = userMessageStyle
     } else if (this.props.message.from.includes("Security")) {
       userStyle = Object.assign({}, botMessageStyle)
-      userStyle["background"] = "#f44242"
+      userStyle["background"] = "#E84261"
     } else if (this.props.message.from.includes("Resilience")) {
       userStyle = Object.assign({}, botMessageStyle)
-      userStyle["background"] = "#f4aa42"
+      userStyle["background"] = "#F8B441"
     } else {
       userStyle = botMessageStyle
     }
