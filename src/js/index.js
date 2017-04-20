@@ -1,12 +1,12 @@
 //import $ from 'jquery';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react"
+import ReactDOM from "react-dom"
 //import Grid from 'react-bootstrap/lib/Grid';
 //import Row from 'react-bootstrap/lib/Row';
 //import Navbar from 'react-bootstrap/lib/Navbar';
-import Chat from './chat';
+import Chat from "./chat"
 
-ReactDOM.render(<Chat />, document.getElementById('app'));
+ReactDOM.render(<Chat />, document.getElementById("app"))
 
 //const navbarInstance = (
 //  <Navbar inverse>
@@ -217,5 +217,3 @@ ReactDOM.render(<Chat />, document.getElementById('app'));
 //  navbarInstance,
 //  document.getElementById('navBar')
 //);
-
-
